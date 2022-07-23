@@ -1,0 +1,8 @@
+<h2>Book Detail</h2>
+<div *ngIf="book$ | async as book">
+  <p>Book_title : {{book.book_title}}</p>
+  <p>Book_author : {{book.book_author}}</p>
+  <p>Book_genre : {{book.book_genre}}</p>
+  <p>Book_realeased_date : {{book.book_released_date}}</p>
+  <p>Book_Price : {{book.book_price}}</p>
+</div>

@@ -1,0 +1,161 @@
+<div class="card">
+  <div class="card-header">Edit Book</div>
+  <div class="card-body">
+    <form [formGroup]="bookForm1" novalidate>
+        <div class="form-group">
+        <input type="hidden" class="form-control" formControlName="bookId" />
+      </div>
+      <div class="form-group">
+        <label for="btitle">Book Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="btitle"
+          placeholder="Enter Book Title"
+          formControlName="bookTitle"
+          required
+        />
+      </div>
+
+      <!-- Book Title validators -->
+      <div
+        *ngIf="bookTitle!.invalid && (bookTitle!.dirty || bookTitle!.touched)"
+        class="alert alert-danger text-danger"
+      >
+        <div *ngIf="bookTitle!.errors?.['required']">
+          Book Title is required.
+        </div>
+        <div *ngIf="bookTitle!.errors?.['isString']">
+          Alphabets only allowed
+        </div>
+      </div>
+      <!-------------------------------->
+
+      <div class="form-group">
+        <label for="bauthor">Book Author:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="bauthor"
+          placeholder="Enter Book Author"
+          formControlName="bookAuthor"
+          required
+        />
+      </div>
+
+      <!-- Book Author validators -->
+      <div
+        *ngIf="
+          bookAuthor!.invalid && (bookAuthor!.dirty || bookAuthor!.touched)
+        "
+        class="alert alert-danger text-danger"
+      >
+        <div *ngIf="bookAuthor!.errors?.['required']">
+          Author Name is required.
+        </div>
+        <div *ngIf="bookAuthor!.errors?.['isString']">
+          Alphabets only allowed
+        </div>
+      </div>
+      <!-------------------------------->
+
+      <div class="form-group">
+        <label for="bgenre">Book Genre:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="bgenre"
+          placeholder="Enter Book Genre"
+          formControlName="bookGenre"
+          required
+        />
+      </div>
+
+      <!-- Book Genre validators -->
+      <div
+        *ngIf="bookGenre!.invalid && (bookGenre!.dirty || bookGenre!.touched)"
+        class="alert alert-danger text-danger"
+      >
+        <div *ngIf="bookGenre!.errors?.['required']">
+          Book Genre is required.
+        </div>
+        <div *ngIf="bookGenre!.errors?.['isString']">
+          Alphabets only allowed
+        </div>
+      </div>
+      <!-------------------------------->
+
+      <div class="form-group">
+        <label for="year">Book Released Year:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="year"
+          placeholder="Enter Released Year"
+          formControlName="releasedYear"
+          required
+        />
+
+        <!-- Date validators -->
+        <div
+          *ngIf="
+            releasedYear!.invalid &&
+            (releasedYear!.dirty || releasedYear!.touched)
+          "
+          class="alert alert-danger text-danger"
+        >
+          <div *ngIf="releasedYear!.errors?.['required']">
+            Book price is required.
+          </div>
+          <div *ngIf="releasedYear!.errors?.['isDate']">
+            Date should be in 'dd/mm/yyyy' format
+          </div>
+        </div>
+        <!-------------------------------->
+      </div>
+      <div class="form-group">
+        <label for="price">Book Price:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="price"
+          placeholder="$ Book Price"
+          formControlName="bookPrice"
+          required
+        />
+      </div>
+
+      <!-- Book Price validators -->
+      <div
+        *ngIf="bookPrice!.invalid && (bookPrice!.dirty || bookPrice!.touched)"
+        class="alert alert-danger text-danger"
+      >
+        <div *ngIf="bookPrice!.errors?.['required']">
+          Book price is required.
+        </div>
+        <div *ngIf="bookPrice!.errors?.['isNumber']">
+          Price should be in Number format
+        </div>
+      </div>
+      <!-------------------------------->
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!bookForm1.valid"
+        (click)="saveBook()"
+      >
+        Save
+      </button>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!bookForm1.valid"
+        (click)="goToEditBook()"
+      >
+        Cancel
+      </button>
+    
+    </form>
+   
+  </div>
+</div>

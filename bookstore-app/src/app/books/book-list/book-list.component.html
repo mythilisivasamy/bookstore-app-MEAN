@@ -1,0 +1,24 @@
+<div>
+<h3>Book List</h3>
+<table class="table table-info table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Book Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books$ | async; let idx=index ">
+       
+          <td> <span class="badge">{{idx+1}}</span></td>
+          <td>{{ book.book_title }}</td>
+          <td>{{ book.book_author }}</td>
+          <td><a [routerLink]="['book',book._id]" ><button type="button" class="btn btn-info">View</button></a></td>
+           </tr>
+        
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

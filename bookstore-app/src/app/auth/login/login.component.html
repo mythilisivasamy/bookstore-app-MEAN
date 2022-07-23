@@ -1,0 +1,54 @@
+<div class="card bg-light ml-10" style="width: 400px; align-content: center">
+  <div class="card-header">{{message}}</div>
+  <div class="card-body">
+    <form [formGroup]="loginForm" novalidate>
+      <div [hidden]="authService.isLoggedIn">
+      <table class="table">
+        <tr>
+          <div class="form-group">
+            <td>
+              <label for="name" class="form-text-label">Login Name</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control-md"
+                id="name"
+                formControlName="loginName"
+                placeholder="Enter your name"
+                required
+              />
+            </td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <td>
+              <label for="pwd" class="form-password-label">Password</label>
+            </td>
+            <td>
+              <input
+                type="password"
+                class="form-control-md"
+                id="pwd"
+                placeholder="Password"
+              />
+            </td>
+          </div>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="authService.isLoggedIn">
+     <h3 class="text-success">Hey,You've already login</h3>
+    </div>
+
+    </form>
+  </div>
+  <div class="card-footer">
+    <p>
+      <button type="button" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+      <button type="button" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+    </p>
+    
+  </div>
+</div>

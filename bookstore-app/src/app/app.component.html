@@ -1,0 +1,30 @@
+<ul class="nav bg-info ">
+    <li class="nav-item">
+      <a routerLink="/home" routerLinkActive="bg-white text-info" class="nav-link text-white">Home</a>
+    </li>
+    <li class="nav-item">
+      <a  routerLink="/booklist" routerLinkActive="bg-white text-info" class="nav-link text-white">BookList</a>
+    </li>
+    
+    <li class="nav-item dropdown ">
+      <a routerLink="/admin" class="nav-link text-white dropdown-toggle" data-toggle="dropdown">Admin</a>
+      <div class="dropdown-menu">
+        <a routerLink="admin/addBook" routerLinkActive="bg-white text-info" class="dropdown-item" >Add Book</a>
+        <a routerLink="admin/editBook" routerLinkActive="bg-white text-info" class="dropdown-item" >Edit Book</a>
+        <a routerLink="../booklist" routerLinkActive="bg-white text-info" class="dropdown-item" >Book List</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/login" routerLinkActive="bg-white text-info" class="nav-link text-white">Login</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="[{ outlets: { popup: ['contact'] } }]" routerLinkActive="bg-white text-info" class="nav-link text-white">Contact</a>
+    </li>
+  </ul>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+      <router-outlet name="popup"></router-outlet>
+      
+  
+ 
