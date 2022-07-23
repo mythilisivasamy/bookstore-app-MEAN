@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_db:/data/db
+  server:
+    build: crud-server
+    image: mythilisivasamy/meanstack_backend
+    ports:
+      - '3030:3030'
+    links:
+      - mongo
+    environment:
+      - CONNECTIONSTRING=mongodb://mongo:27017/books
+  client:
+    build: crud-client
+    image: mythilisivasamy/meanstack_frontend
+    ports:
+      - '8000:8000'    
+volumes:
+ mongo_db:  
